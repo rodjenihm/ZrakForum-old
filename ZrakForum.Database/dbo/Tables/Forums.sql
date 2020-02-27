@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Forums]
 (
 	[Id]		 INT NOT NULL,
-	[CreatedAt]  DATETIME2(7)  NOT NULL,
+	[CreatedAt]  DATETIME2(7)  NOT NULL DEFAULT GETDATE(),
 	[Name]		 NVARCHAR(255) NOT NULL,
 	CONSTRAINT [PK_Forums] PRIMARY KEY ([Id] ASC) 
 )
