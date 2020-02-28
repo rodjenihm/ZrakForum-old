@@ -76,5 +76,7 @@
   <ItemGroup>
     <None Include="ZrakForum.Database.publish.xml" />
     <None Include="dbo\Scripts\SeedRoles.sql" />
+    <None Include="dbo\Scripts\SeedAccounts.sql" />
+    <None Include="dbo\Scripts\SeedForums.sql" />
   </ItemGroup>
 </Project>
