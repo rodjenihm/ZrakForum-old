@@ -124,6 +124,8 @@
     <Compile Include="Models\AccountLoginDto.cs" />
     <Compile Include="Models\AccountRegisterDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IPasswordHasher.cs" />
+    <Compile Include="Services\PasswordHasher.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
