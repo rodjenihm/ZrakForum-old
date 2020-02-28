@@ -1,5 +1,5 @@
 ﻿INSERT INTO [dbo].[Roles]
-([dbo].[Roles].[Name])
+([Name])
 VALUES
 ('User'),
 ('Admin');

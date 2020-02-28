@@ -1,5 +1,5 @@
 ﻿INSERT INTO [dbo].[Forums]
-([dbo].[Forums].[Name])
+([Name])
 VALUES
 ('Politika'),
 ('Sport'),
