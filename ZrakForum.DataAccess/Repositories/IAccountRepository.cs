@@ -1,0 +1,11 @@
+﻿using System.Threading.Tasks;
+using ZrakForum.DataAccess.Entities;
+
+namespace ZrakForum.DataAccess.Repositories
+{
+    public interface IAccountRepository : IRepository<Account>
+    {
+        Account GetByUsername(string username);
+        Task<Account> GetByUsernameAsync(string username);
+    }
+}
