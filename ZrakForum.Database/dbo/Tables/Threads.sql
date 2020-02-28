@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Threads]
 (
-	[Id]			INT				NOT NULL,
+	[Id]			INT				NOT NULL IDENTITY,
 	[CreatedAt]		DATETIME2(7)    NOT NULL DEFAULT GETDATE(),
 	[Name]			NVARCHAR(255)	NOT NULL,
 	[AuthorId]		INT				NOT NULL DEFAULT 1,

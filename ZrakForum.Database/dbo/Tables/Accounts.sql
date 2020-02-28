@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Accounts]
 (
-	[Id]			INT			  NOT NULL,
+	[Id]			INT			  NOT NULL IDENTITY,
 	[CreatedAt]		DATETIME2(7)  NOT NULL DEFAULT GETDATE(),
 	[Email]			NVARCHAR(255) NOT NULL,
 	[Username]		NVARCHAR(30)  NOT NULL,

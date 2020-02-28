@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Posts]
 (
-	[Id]         INT			NOT NULL,
+	[Id]         INT			NOT NULL IDENTITY,
 	[CreatedAt]  DATETIME2(7)   NOT NULL DEFAULT GETDATE(),
 	[Content]	 NVARCHAR(MAX)  NOT NULL,
 	[AuthorId]   INT			NOT NULL DEFAULT 1,
