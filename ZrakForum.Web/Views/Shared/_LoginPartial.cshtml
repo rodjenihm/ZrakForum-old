@@ -6,7 +6,8 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li>
-                @Html.ActionLink("Pozdrav " + @User.Identity.Name + "!", "Index", "Manage", null, new { title = "Manage", @class = "nav-link" })
+                @*@Html.ActionLink("Pozdrav @" + User.Identity.Name + "!", "Index", "Manage", null, new { title = "Manage", @class = "nav-link" })*@
+                <a class="nav-link" href="#">Pozdrav @@@User.Identity.Name!</a>
             </li>
             <li>
                 <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Odjavite se</a>
