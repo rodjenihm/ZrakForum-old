@@ -6,5 +6,8 @@ namespace ZrakForum.Web.Services
     {
         bool Authenticate(string username, string password);
         Task<bool> AuthenticateAsync(string username, string password);
+
+        void SignOut();
+        Task SignOutAsync();
     }
 }

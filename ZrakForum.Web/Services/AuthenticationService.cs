@@ -46,7 +46,7 @@ namespace ZrakForum.Web.Services
                 identity.AddClaims(roleClaims);
             }
 
-            HttpContext.Current.GetOwinContext().Authentication.SignIn(new AuthenticationProperties()
+            AuthenticationManager.SignIn(new AuthenticationProperties()
             {
                 AllowRefresh = true,
                 IsPersistent = true,
@@ -58,7 +58,55 @@ namespace ZrakForum.Web.Services
 
         public async Task<bool> AuthenticateAsync(string username, string password)
         {
+            var account = await accountRepository.GetByUsernameAsync(username);
+
+            if (account == null || !passwordHasher.VerifyHashedPassword(password, account.PasswordHash))
+            {
+                return false;
+            }
+
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, account.Username),
+                new Claim(ClaimTypes.Email, account.Email),
+            };
+
+            var identity = new ClaimsIdentity(claims, "ApplicationCookie");
+
+            var roles = accountRepository.GetRolesByUsername(username);
+
+            if (roles.Any())
+            {
+                var roleClaims = roles.Select(r => new Claim(ClaimTypes.Role, r));
+                identity.AddClaims(roleClaims);
+            }
+
+            AuthenticationManager.SignIn(new AuthenticationProperties()
+            {
+                AllowRefresh = true,
+                IsPersistent = true,
+                ExpiresUtc = DateTime.UtcNow.AddSeconds(60)
+            }, identity);
+
+            return true;
+        }
+
+        public void SignOut()
+        {
+            AuthenticationManager.SignOut();
+        }
+
+        public async Task SignOutAsync()
+        {
             throw new NotImplementedException();
+        }
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.Current.GetOwinContext().Authentication;
+            }
         }
     }
 }

@@ -31,8 +31,9 @@ namespace ZrakForum.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Login()
+        public ActionResult Login(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -69,19 +70,27 @@ namespace ZrakForum.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Login(AccountLoginDto model)
+        public async Task<ActionResult> Login(AccountLoginDto model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            if (authenticationService.Authenticate(model.Username, model.Password))
+            if (await authenticationService.AuthenticateAsync(model.Username, model.Password))
             {
-                return RedirectToAction("Index", "Home");
+                return string.IsNullOrEmpty(returnUrl) ? RedirectToAction("Index", "Home") : (ActionResult)Redirect(returnUrl);
             }
 
-            return View();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Logout()
+        {
+            authenticationService.SignOut();
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
