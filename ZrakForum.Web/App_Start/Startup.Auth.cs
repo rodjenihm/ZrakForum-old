@@ -18,7 +18,9 @@ namespace ZrakForum.Web
             // Configure the sign in cookie
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
-                LoginPath = new PathString("/Account/Login")
+                AuthenticationType = "ApplicationCookie",
+                LoginPath = new PathString("/Account/Login"),
+                CookieName = "ApplicationCookie"
             });
         }
     }

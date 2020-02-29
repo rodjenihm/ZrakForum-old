@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Owin.Security;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using ZrakForum.DataAccess.Entities;
@@ -28,6 +30,29 @@ namespace ZrakForum.Web.Services
                 return false;
             }
 
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, account.Username),
+                new Claim(ClaimTypes.Email, account.Email),
+            };
+
+            var identity = new ClaimsIdentity(claims, "ApplicationCookie");
+
+            var roles = accountRepository.GetRolesByUsername(username);
+
+            if (roles.Any())
+            {
+                var roleClaims = roles.Select(r => new Claim(ClaimTypes.Role, r));
+                identity.AddClaims(roleClaims);
+            }
+
+            HttpContext.Current.GetOwinContext().Authentication.SignIn(new AuthenticationProperties()
+            {
+                AllowRefresh = true,
+                IsPersistent = true,
+                ExpiresUtc = DateTime.UtcNow.AddSeconds(60)
+            }, identity);
+
             return true;
         }
 
@@ -35,11 +60,5 @@ namespace ZrakForum.Web.Services
         {
             throw new NotImplementedException();
         }
-    }
-
-    public interface IAuthenticationService
-    {
-        bool Authenticate(string username, string password);
-        Task<bool> AuthenticateAsync(string username, string password);
     }
 }

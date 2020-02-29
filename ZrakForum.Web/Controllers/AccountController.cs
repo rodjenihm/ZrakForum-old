@@ -14,11 +14,13 @@ namespace ZrakForum.Web.Controllers
     public class AccountController : Controller
     {
         private readonly IAccountRepository accountRepository;
+        private readonly IAuthenticationService authenticationService;
         private readonly IPasswordHasher passwordHasher;
 
-        public AccountController(IAccountRepository accountRepository, IPasswordHasher passwordHasher)
+        public AccountController(IAccountRepository accountRepository, IAuthenticationService authenticationService, IPasswordHasher passwordHasher)
         {
             this.accountRepository = accountRepository;
+            this.authenticationService = authenticationService;
             this.passwordHasher = passwordHasher;
         }
 
@@ -67,11 +69,16 @@ namespace ZrakForum.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(AccountLoginDto model)
+        public async Task<ActionResult> Login(AccountLoginDto model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
+            }
+
+            if (authenticationService.Authenticate(model.Username, model.Password))
+            {
+                return RedirectToAction("Index", "Home");
             }
 
             return View();

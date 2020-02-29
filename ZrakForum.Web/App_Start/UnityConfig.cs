@@ -21,6 +21,7 @@ namespace ZrakForum.Web
                 (new InjectionConstructor(ConfigurationManager.ConnectionStrings["ZrakForumDb"].ConnectionString));
             container.RegisterType<IAccountRepository, DapperAccountRepository>();
             container.RegisterType<IPasswordHasher, PasswordHasher>();
+            container.RegisterType<IAuthenticationService, AuthenticationService>();
             // e.g. container.RegisterType<ITestService, TestService>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));

@@ -8,9 +8,9 @@ namespace ZrakForum.Web.Models
 {
     public class AccountLoginDto
     {
-        [Required(ErrorMessage = "Email adresa je obavezna")]
-        [EmailAddress(ErrorMessage = "Email adresa nije validna")]
-        public string Email { get; set; }
+        [Required(ErrorMessage = "Korisničko ime je obavezno")]
+        [Display(Name = "Korisničko ime")]
+        public string Username { get; set; }
 
         [Required(ErrorMessage = "Šifra je obavezna")]
         [DataType(DataType.Password)]
