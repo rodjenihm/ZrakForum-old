@@ -14,6 +14,7 @@ namespace ZrakForum.Web.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult About()
         {
             return View();
