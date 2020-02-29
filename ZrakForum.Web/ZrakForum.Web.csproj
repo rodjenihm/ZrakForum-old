@@ -103,7 +103,9 @@
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="wwwroot\css\site.css" />
-    <Content Include="wwwroot\css\site.min.css" />
+    <Content Include="wwwroot\css\site.min.css">
+      <DependentUpon>site.css</DependentUpon>
+    </Content>
     <Content Include="wwwroot\img\logo.ico" />
     <Content Include="wwwroot\lib\bootstrap\css\bootstrap-grid.css" />
     <Content Include="wwwroot\lib\bootstrap\css\bootstrap-grid.min.css" />
@@ -133,6 +135,7 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="libman.json" />
+    <None Include="bundleconfig.json" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
