@@ -46,11 +46,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Forum.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DapperAccountRepository.cs" />
+    <Compile Include="Repositories\DapperForumRepository.cs" />
     <Compile Include="Repositories\IAccountRepository.cs" />
+    <Compile Include="Repositories\IForumRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Utilities\DapperConnectionString.cs" />
   </ItemGroup>
