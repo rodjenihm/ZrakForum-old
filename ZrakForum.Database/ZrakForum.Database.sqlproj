@@ -75,6 +75,7 @@
     <Build Include="dbo\Stored Procedures\spRoles_Create.sql" />
     <Build Include="dbo\Stored Procedures\spRoles_GetById.sql" />
     <Build Include="dbo\Stored Procedures\spRoles_GetByName.sql" />
+    <Build Include="dbo\Stored Procedures\spAccounts_GetByEmail.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ZrakForum.Database.refactorlog" />

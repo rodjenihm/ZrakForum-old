@@ -87,5 +87,23 @@ namespace ZrakForum.DataAccess.Repositories
                 return account;
             }
         }
+
+        public Account GetByEmail(string email)
+        {
+            using (var dbConnection = new SqlConnection(connectionString.Value))
+            {
+                var account = dbConnection.Query<Account>("spAccounts_GetByEmail @Email", new { Email = email }).FirstOrDefault();
+                return account;
+            }
+        }
+
+        public async Task<Account> GetByEmailAsync(string email)
+        {
+            using (var dbConnection = new SqlConnection(connectionString.Value))
+            {
+                var account = (await dbConnection.QueryAsync<Account>("spAccounts_GetByEmail @Email", new { Email = email })).FirstOrDefault();
+                return account;
+            }
+        }
     }
 }

@@ -7,5 +7,8 @@ namespace ZrakForum.DataAccess.Repositories
     {
         Account GetByUsername(string username);
         Task<Account> GetByUsernameAsync(string username);
+
+        Account GetByEmail(string email);
+        Task<Account> GetByEmailAsync(string email);
     }
 }

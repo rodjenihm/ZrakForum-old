@@ -11,3 +11,7 @@
 GO
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Accounts_Username]
 	ON [dbo].[Accounts] ([Username] ASC)
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [IX_Accounts_Email]
+	ON [dbo].[Accounts] ([Email] ASC)
