@@ -105,5 +105,23 @@ namespace ZrakForum.DataAccess.Repositories
                 return account;
             }
         }
+
+        public IEnumerable<string> GetRolesByUsername(string username)
+        {
+            using (var dbConnection = new SqlConnection(connectionString.Value))
+            {
+                var roles = dbConnection.Query<string>("spAccountRoles_GetByUsername @Username", new { Username = username });
+                return roles;
+            }
+        }
+
+        public async Task<IEnumerable<string>> GetRolesByUsernameAsync(string username)
+        {
+            using (var dbConnection = new SqlConnection(connectionString.Value))
+            {
+                var roles = await dbConnection.QueryAsync<string>("spAccountRoles_GetByUsername @Username", new { Username = username });
+                return roles;
+            }
+        }
     }
 }
