@@ -49,12 +49,15 @@
     <Compile Include="Entities\Forum.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\Account.cs" />
+    <Compile Include="Entities\Thread.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DapperAccountRepository.cs" />
     <Compile Include="Repositories\DapperForumRepository.cs" />
+    <Compile Include="Repositories\DapperThreadRepository.cs" />
     <Compile Include="Repositories\IAccountRepository.cs" />
     <Compile Include="Repositories\IForumRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\IThreadRepository.cs" />
     <Compile Include="Utilities\DapperConnectionString.cs" />
   </ItemGroup>
   <ItemGroup>

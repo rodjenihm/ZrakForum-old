@@ -11,17 +11,19 @@ namespace ZrakForum.Web.Controllers
     public class ForumController : Controller
     {
         private readonly IForumRepository forumRepository;
+        private readonly IThreadRepository threadRepository;
 
-        public ForumController(IForumRepository forumRepository)
+        public ForumController(IForumRepository forumRepository, IThreadRepository threadRepository)
         {
             this.forumRepository = forumRepository;
+            this.threadRepository = threadRepository;
         }
 
         // GET: Forum
         public async Task<ActionResult> Index(string forumName)
         {
-            var forum = await forumRepository.GetByNameAsync(forumName);
-            return View(forum);
+            var threads = await threadRepository.GetByForumNameAsync(forumName);
+            return View(threads);
         }
     }
 }

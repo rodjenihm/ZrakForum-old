@@ -79,6 +79,7 @@
     <Build Include="dbo\Stored Procedures\spAccountRoles_GetByUsername.sql" />
     <Build Include="dbo\Stored Procedures\spForums_GetAll.sql" />
     <Build Include="dbo\Stored Procedures\spForums_GetByName.sql" />
+    <Build Include="dbo\Stored Procedures\spThreads_GetByForumName.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ZrakForum.Database.refactorlog" />
@@ -88,5 +89,6 @@
     <None Include="dbo\Scripts\SeedRoles.sql" />
     <None Include="dbo\Scripts\SeedAccounts.sql" />
     <None Include="dbo\Scripts\SeedForums.sql" />
+    <None Include="dbo\Scripts\SeedThreads.sql" />
   </ItemGroup>
 </Project>
