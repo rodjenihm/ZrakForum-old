@@ -52,5 +52,19 @@ namespace ZrakForum.DataAccess.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public Forum GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<Forum> GetByNameAsync(string name)
+        {
+            using (var dbConnection = new SqlConnection(connectionString.Value))
+            {
+                var forum = (await dbConnection.QueryAsync<Forum>("spForums_GetByName @Name", new { Name = name })).FirstOrDefault();
+                return forum;
+            }
+        }
     }
 }

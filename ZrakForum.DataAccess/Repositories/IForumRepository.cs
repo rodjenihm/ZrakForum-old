@@ -9,5 +9,7 @@ namespace ZrakForum.DataAccess.Repositories
 {
     public interface IForumRepository : IRepository<Forum>
     {
+        Forum GetByName(string name);
+        Task<Forum> GetByNameAsync(string name);
     }
 }

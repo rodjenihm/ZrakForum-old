@@ -122,6 +122,7 @@
       <DependentUpon>site.css</DependentUpon>
     </Content>
     <Content Include="wwwroot\img\logo.ico" />
+    <Content Include="wwwroot\js\showLoginError.js" />
     <Content Include="wwwroot\lib\bootstrap\css\bootstrap-grid.css" />
     <Content Include="wwwroot\lib\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="wwwroot\lib\bootstrap\css\bootstrap-reboot.css" />
@@ -166,6 +167,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Forum\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -185,7 +187,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Forum\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ZrakForum.DataAccess\ZrakForum.DataAccess.csproj">

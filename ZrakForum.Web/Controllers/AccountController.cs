@@ -82,6 +82,7 @@ namespace ZrakForum.Web.Controllers
                 return string.IsNullOrEmpty(returnUrl) ? RedirectToAction("Index", "Home") : (ActionResult)Redirect(returnUrl);
             }
 
+            ViewBag.LoginError = "Prijava neuspešna!";
             return View(model);
         }
 
