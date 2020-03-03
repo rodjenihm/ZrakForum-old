@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ZrakForum.DataAccess.Models.ForumThread>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@if (Model.Any())
+{
+    <table class="table table-hover table-striped table-bordered">
+        <thead class="bg-dark text-light">
+            <tr>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.ThreadName)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.StartedBy)
+                </th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThreadName)
+                </td>
+                <td>
+                    @item.StartedBy @item.StartedAt
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h2>Trenutno nema tema na ovom forumu</h2>
+}
+
+@Html.ActionLink("Nova tema", "Create", "Thread", null, new { @class = "btn btn-dark mb-2 float-right" })
+

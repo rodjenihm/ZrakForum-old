@@ -63,19 +63,5 @@ namespace ZrakForum.DataAccess.Repositories
         {
             throw new NotImplementedException();
         }
-
-        public IEnumerable<ForumThread> GetForumThreadViewModel(string forumName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<ForumThread>> GetForumThreadViewModelAsync(string forumName)
-        {
-            using (var dbConnection = new SqlConnection(connectionString.Value))
-            {
-                var forumThreads = await dbConnection.QueryAsync<ForumThread>("spThreads_GetForumIndexViewModel @ForumName", new { ForumName = forumName });
-                return forumThreads;
-            }
-        }
     }
 }

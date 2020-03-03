@@ -12,8 +12,5 @@ namespace ZrakForum.DataAccess.Repositories
     {
         IEnumerable<Thread> GetByForumName(string forumName);
         Task<IEnumerable<Thread>> GetByForumNameAsync(string forumName);
-
-        IEnumerable<ForumThread> GetForumThreadViewModel(string forumName);
-        Task<IEnumerable<ForumThread>> GetForumThreadViewModelAsync(string forumName);
     }
 }

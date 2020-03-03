@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZrakForum.DataAccess.Entities;
+using ZrakForum.DataAccess.Models;
 
 namespace ZrakForum.DataAccess.Repositories
 {
@@ -11,5 +12,8 @@ namespace ZrakForum.DataAccess.Repositories
     {
         Forum GetByName(string name);
         Task<Forum> GetByNameAsync(string name);
+
+        IEnumerable<ForumThread> GetForumDetailsViewModel(string forumName);
+        Task<IEnumerable<ForumThread>> GetForumDetailsViewModelAsync(string forumName);
     }
 }

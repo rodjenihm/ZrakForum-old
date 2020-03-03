@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[spThreads_GetForumIndexViewModel]
+﻿CREATE PROCEDURE [dbo].[spThreads_GetForumDetailsViewModel]
 	@ForumName NVARCHAR(255)
 AS
 BEGIN

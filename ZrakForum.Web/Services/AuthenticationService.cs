@@ -50,7 +50,7 @@ namespace ZrakForum.Web.Services
             {
                 AllowRefresh = true,
                 IsPersistent = true,
-                ExpiresUtc = DateTime.UtcNow.AddSeconds(60)
+                ExpiresUtc = DateTime.UtcNow.AddDays(7)
             }, identity);
 
             return true;
@@ -85,7 +85,7 @@ namespace ZrakForum.Web.Services
             {
                 AllowRefresh = true,
                 IsPersistent = true,
-                ExpiresUtc = DateTime.UtcNow.AddSeconds(60)
+                ExpiresUtc = DateTime.UtcNow.AddDays(7)
             }, identity);
 
             return true;
