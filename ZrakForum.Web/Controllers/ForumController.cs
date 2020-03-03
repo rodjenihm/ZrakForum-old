@@ -22,7 +22,7 @@ namespace ZrakForum.Web.Controllers
         // GET: Forum
         public async Task<ActionResult> Index(string forumName)
         {
-            var threads = await threadRepository.GetByForumNameAsync(forumName);
+            var threads = await threadRepository.GetForumThreadViewModelAsync(forumName);
             return View(threads);
         }
     }

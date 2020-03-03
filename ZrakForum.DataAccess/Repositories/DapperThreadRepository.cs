@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZrakForum.DataAccess.Entities;
+using ZrakForum.DataAccess.Models;
 using ZrakForum.DataAccess.Utilities;
 
 namespace ZrakForum.DataAccess.Repositories
@@ -61,6 +62,20 @@ namespace ZrakForum.DataAccess.Repositories
         public Task<Thread> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<ForumThread> GetForumThreadViewModel(string forumName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<ForumThread>> GetForumThreadViewModelAsync(string forumName)
+        {
+            using (var dbConnection = new SqlConnection(connectionString.Value))
+            {
+                var forumThreads = await dbConnection.QueryAsync<ForumThread>("spThreads_GetForumIndexViewModel @ForumName", new { ForumName = forumName });
+                return forumThreads;
+            }
         }
     }
 }
