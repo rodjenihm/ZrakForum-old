@@ -9,6 +9,8 @@ namespace ZrakForum.DataAccess.Models
 {
     public class ForumThread
     {
+        public int ThreadId { get; set; }
+
         public DateTime StartedAt { get; set; }
 
         [Display(Name = "Tema")]
