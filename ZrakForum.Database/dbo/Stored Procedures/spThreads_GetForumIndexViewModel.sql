@@ -13,7 +13,7 @@ BEGIN
 	);
 
 	SELECT
-	[Threads].[Id] AS [ThreadId], [Threads].[CreatedAt] AS [StartedAt], [Threads].[Name] AS [ThreadName], [Accounts].[Username] AS [StartedBy]
+	[Threads].[CreatedAt] AS [StartedAt], [Threads].[Name] AS [ThreadName], [Accounts].[Username] AS [StartedBy]
 	FROM [dbo].[Threads]
 	JOIN [dbo].[Accounts]
 	ON ([Threads].[AuthorId] = [Accounts].[Id])
