@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZrakForum.DataAccess.Entities;
-using ZrakForum.DataAccess.Models;
 using ZrakForum.DataAccess.Utilities;
 
 namespace ZrakForum.DataAccess.Repositories

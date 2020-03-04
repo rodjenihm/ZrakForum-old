@@ -19,7 +19,7 @@
         @foreach (var forum in Model)
         {
             <tr>
-                <td>@Html.ActionLink(forum.Name, "Details", "Forum", new { forumName = forum.Name }, new { @class = "navbar-brand" })</td>
+                <td>@Html.ActionLink(forum.Name, "Show", "Forum", new { forumName = Server.UrlEncode(forum.Name) }, new { @class = "navbar-brand" })</td>
             </tr>
         }
     </tbody>

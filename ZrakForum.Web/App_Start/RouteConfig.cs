@@ -16,7 +16,7 @@ namespace ZrakForum.Web
             routes.MapRoute(
                 name: "Forum",
                  url: "Forum/{forumName}",
-                 defaults: new { controller = "Forum", action = "Details" }
+                 defaults: new { controller = "Forum", action = "Show" }
                  //constraints: new { forumName = @"\d+" }
             );
 

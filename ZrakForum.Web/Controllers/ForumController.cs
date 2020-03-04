@@ -20,9 +20,9 @@ namespace ZrakForum.Web.Controllers
         }
 
         [Authorize]
-        public async Task<ActionResult> Details(string forumName)
+        public async Task<ActionResult> Show(string forumName)
         {
-            var threads = await forumRepository.GetForumDetailsViewModelAsync(forumName);
+            var threads = await threadRepository.GetByForumNameAsync(forumName);
             return View(threads);
         }
     }

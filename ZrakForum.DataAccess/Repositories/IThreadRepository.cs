@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZrakForum.DataAccess.Entities;
-using ZrakForum.DataAccess.Models;
 
 namespace ZrakForum.DataAccess.Repositories
 {

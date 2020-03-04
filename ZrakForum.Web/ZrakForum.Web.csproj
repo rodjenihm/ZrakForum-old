@@ -140,6 +140,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ThreadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -167,7 +168,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Forum\Details.cshtml" />
+    <Content Include="Views\Forum\Show.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -188,6 +189,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Views\Thread\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ZrakForum.DataAccess\ZrakForum.DataAccess.csproj">

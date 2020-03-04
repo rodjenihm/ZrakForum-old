@@ -50,7 +50,6 @@
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\Thread.cs" />
-    <Compile Include="Models\ForumThread.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DapperAccountRepository.cs" />
     <Compile Include="Repositories\DapperForumRepository.cs" />
@@ -64,5 +63,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
