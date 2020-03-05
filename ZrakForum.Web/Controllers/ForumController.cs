@@ -20,10 +20,16 @@ namespace ZrakForum.Web.Controllers
         }
 
         [Authorize]
-        public async Task<ActionResult> Show(string forumName)
+        public async Task<ActionResult> Show(string forumName, string threadName)
         {
-            var threads = await threadRepository.GetByForumNameAsync(forumName);
-            return View(threads);
+            if (string.IsNullOrEmpty(threadName))
+            {
+                var threads = await threadRepository.GetForumThreadsByForumNameAsync(forumName);
+                return View(threads);
+            }
+
+            var thread = await threadRepository.GetByNameAsync(Server.UrlDecode(threadName));
+            return View("~/Views/Thread/Show.cshtml", thread);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ZrakForum.DataAccess.Entities.Thread>
+﻿@model IEnumerable<ZrakForum.DataAccess.Models.ForumThread>
 
 @{
     ViewBag.Title = "Index";
@@ -11,10 +11,10 @@
         <thead class="bg-dark text-light">
             <tr>
                 <th scope="col">
-                    @Html.DisplayNameFor(model => model.Name)
+                    @Html.DisplayNameFor(model => model.ThreadName)
                 </th>
                 <th scope="col">
-                    @Html.DisplayNameFor(model => model.AuthorId)
+                    @Html.DisplayNameFor(model => model.StartedBy)
                 </th>
             </tr>
         </thead>
@@ -23,10 +23,10 @@
         {
             <tr>
                 <td>
-                    @Html.ActionLink(item.Name, "Show", "Forum", new { threadName = Server.UrlEncode(item.Name) }, null)
+                    @Html.ActionLink(item.ThreadName, "Show", "Forum", new { threadName = Server.UrlEncode(item.ThreadName) }, null)
                 </td>
                 <td>
-                    @item.AuthorId @item.CreatedAt
+                    @item.StartedBy @item.StartedAt.ToString("dd. MM. yyyy.")
                 </td>
             </tr>
         }

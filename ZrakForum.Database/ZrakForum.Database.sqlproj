@@ -60,6 +60,7 @@
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\Stored Procedures" />
     <Folder Include="dbo\Scripts" />
+    <Folder Include="dbo\Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Accounts.sql" />
@@ -80,7 +81,8 @@
     <Build Include="dbo\Stored Procedures\spForums_GetAll.sql" />
     <Build Include="dbo\Stored Procedures\spForums_GetByName.sql" />
     <Build Include="dbo\Stored Procedures\spThreads_GetByForumName.sql" />
-    <Build Include="dbo\Stored Procedures\spThreads_GetForumShowViewModel.sql" />
+    <Build Include="dbo\Stored Procedures\spForumThreads_GetByForumName.sql" />
+    <Build Include="dbo\Views\vForumThreads.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ZrakForum.Database.refactorlog" />
