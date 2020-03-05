@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Forum.cs" />
+    <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\Thread.cs" />

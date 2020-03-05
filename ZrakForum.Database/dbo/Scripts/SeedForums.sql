@@ -1,7 +1,7 @@
 ﻿INSERT INTO [dbo].[Forums]
-([Name])
+([Name], [Description])
 VALUES
-('Politika'),
-('Sport'),
-('Kultura'),
-('Zabava');
+('Politika', 'Aktuelne političke teme iz našega grada.'),
+('Sport', 'Za ljubitelje sporta i rekreacije. Sve informacije i vesti o lokalnim klubovima.'),
+('Kultura', 'Sve ono što oplemenjuje našu dušu!'),
+('Zabava', 'Nakon teških tema vala se malo i opustiti :)');

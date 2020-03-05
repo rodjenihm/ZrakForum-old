@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace ZrakForum.DataAccess.Entities
 {
-    public class Thread : BaseEntity
+    public class Post : BaseEntity
     {
-        public string Name { get; set; }
+        public string Content { get; set; }
 
         public int AuthorId { get; set; }
         public Account Author { get; set; }
 
-        public int ForumId { get; set; }
-        public Forum Forum { get; set; }
+        public int ThreadId { get; set; }
+        public Thread Thread { get; set; }
     }
 }

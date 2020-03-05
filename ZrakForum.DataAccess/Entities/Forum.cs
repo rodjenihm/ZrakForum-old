@@ -9,5 +9,7 @@ namespace ZrakForum.DataAccess.Entities
     public class Forum : BaseEntity
     {
         public string Name { get; set; }
+        public string Description { get; set; }
+        public ICollection<Thread> Threads { get; set; }
     }
 }
