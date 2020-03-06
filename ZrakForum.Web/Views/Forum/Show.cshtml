@@ -9,38 +9,51 @@
 {
     <h2>Traženi forum ne postoji</h2>
 }
-else if (Model.Threads == null)
-{
-    <h2>Neuspešno učitavanje tema sa ovog foruma. Molimo pokušajte kasnije</h2>
-}
-else if (!Model.Threads.Any())
-{
-    <h2>Trenutno nema tema na ovom forumu</h2>
-}
 else
 {
-    <table class="table table-hover table-striped table-bordered">
-        <thead class="bg-dark text-light">
-            <tr>
-                <th scope="col">Tema</th>
-                <th scope="col">Pokrenuo</th>
-            </tr>
-        </thead>
+    if (Model.Threads == null)
+    {
+        <h2>Neuspešno učitavanje tema sa ovog foruma. Molimo pokušajte kasnije</h2>
+    }
+    else if (!Model.Threads.Any())
+    {
+        <h2>Trenutno nema tema na ovom forumu</h2>
+    }
+    else
+    {
+        <table class="table table-hover table-striped table-bordered">
+            <thead class="bg-dark text-light">
+                <tr>
+                    <th scope="col">Tema</th>
+                    <th scope="col">Pokrenuo</th>
+                </tr>
+            </thead>
 
-        @foreach (var item in Model.Threads)
-        {
-            <tr>
-                <td>
-                    @Html.ActionLink(item.Name, "Show", "Forum", new { threadName = Server.UrlEncode(item.Name) }, null)
-                </td>
-                <td>
-                    @item.Author.Username @item.CreatedAt.ToString("dd. MM. yyyy.")
-                </td>
-            </tr>
-        }
-    </table>
+            @foreach (var item in Model.Threads)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Name, "Show", "Forum", new { threadName = Server.UrlEncode(item.Name) }, null)
+                    </td>
+                    <td>
+                        @if (item.Author != null)
+                        {
+                            <span>@item.Author.Username</span>
+                            <br />
+                            <span>@item.CreatedAt.ToString("dd. MM. yyyy.")</span>
+                        }
+                        else
+                        {
+                            @:Neuspelo učitavanje informacija o temi
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+
+    @Html.ActionLink("Nova tema", "Create", "Thread", new { onForum = Server.UrlEncode(Model.Name) }, new { @class = "btn btn-dark mb-2 float-right" })
 }
 
 
-@Html.ActionLink("Nova tema", "Create", "Thread", null, new { @class = "btn btn-dark mb-2 float-right" })
 

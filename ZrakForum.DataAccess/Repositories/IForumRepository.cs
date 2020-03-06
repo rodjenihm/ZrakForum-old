@@ -9,7 +9,7 @@ namespace ZrakForum.DataAccess.Repositories
 {
     public interface IForumRepository : IRepository<Forum>
     {
-        Forum GetByName(string name);
-        Task<Forum> GetByNameAsync(string name);
+        Forum GetByName(string name, bool includeThreads = false);
+        Task<Forum> GetByNameAsync(string name, bool includeThreads = false);
     }
 }

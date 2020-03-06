@@ -83,6 +83,7 @@
     <Build Include="dbo\Stored Procedures\spThreads_GetByForumName.sql" />
     <Build Include="dbo\Stored Procedures\spForumThreads_GetByForumName.sql" />
     <Build Include="dbo\Views\vForumThreads.sql" />
+    <Build Include="dbo\Stored Procedures\spForums_GetByNameIncludeThreads.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ZrakForum.Database.refactorlog" />

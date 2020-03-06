@@ -26,16 +26,7 @@ namespace ZrakForum.Web.Controllers
         {
             if (string.IsNullOrEmpty(threadName))
             {
-                // Ovo definitivno radi ali nije optimalno. Veliki broj konekcije na bazu gde se podaci ucitavaju deo po deo a zatim sklapaju.
-                // Privremeno resenje
-                var forumThreads = await threadRepository.GetByForumNameAsync(forumName);
-                foreach (var forumThread in forumThreads)
-                {
-                    var forumAuthor = await accountRepository.GetByIdAsync(forumThread.AuthorId);
-                    forumThread.Author = forumAuthor;
-                }
-                var forum = await forumRepository.GetByNameAsync(forumName);
-                forum.Threads = forumThreads;
+                var forum = await forumRepository.GetByNameAsync(forumName, true);
                 return View(forum);
             }
 

@@ -15,5 +15,7 @@ namespace ZrakForum.DataAccess.Entities
 
         public int ForumId { get; set; }
         public Forum Forum { get; set; }
+
+        public ICollection<Post> Posts { get; set; }
     }
 }
