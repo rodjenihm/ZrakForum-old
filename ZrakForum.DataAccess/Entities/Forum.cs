@@ -10,6 +10,6 @@ namespace ZrakForum.DataAccess.Entities
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public ICollection<Thread> Threads { get; set; }
+        public IEnumerable<Thread> Threads { get; set; }
     }
 }

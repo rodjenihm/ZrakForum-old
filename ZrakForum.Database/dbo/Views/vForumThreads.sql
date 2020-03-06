@@ -1,9 +1,9 @@
 ﻿CREATE VIEW [dbo].[vForumThreads]
 AS
 	SELECT
-	[Threads].[Id] AS ThreadId, [Threads].[CreatedAt] AS StartedAt, [Threads].[Name] AS ThreadName,
-	[Accounts].[Username] AS StartedBy,
-	[Forums].[Name] AS ForumName
-	FROM [dbo].[Threads]
-	JOIN [dbo].[Accounts] ON ([Threads].[AuthorId] = [Accounts].[Id])
-	JOIN [dbo].[Forums] ON ([Threads].[ForumId] = [Forums].[Id])
+	t.[Id] AS ThreadId,t.[CreatedAt] AS StartedAt, t.[Name] AS ThreadName, t.[AuthorId], t.[ForumId],
+	a.[Username] AS StartedBy,
+	f.[Name] AS ForumName
+	FROM [dbo].[Threads] t
+	JOIN [dbo].[Accounts] a ON (t.[AuthorId] = a.[Id])
+	JOIN [dbo].[Forums] f ON (t.[ForumId] = f.[Id])

@@ -1,41 +1,46 @@
-﻿@model IEnumerable<ZrakForum.DataAccess.Models.ForumThread>
+﻿@model ZrakForum.DataAccess.Entities.Forum
 
 @{
     ViewBag.Title = "Index";
 }
 
 
-@if (Model.Any())
+@if (Model == null)
+{
+    <h2>Traženi forum ne postoji</h2>
+}
+else if (Model.Threads == null)
+{
+    <h2>Neuspešno učitavanje tema sa ovog foruma. Molimo pokušajte kasnije</h2>
+}
+else if (!Model.Threads.Any())
+{
+    <h2>Trenutno nema tema na ovom forumu</h2>
+}
+else
 {
     <table class="table table-hover table-striped table-bordered">
         <thead class="bg-dark text-light">
             <tr>
-                <th scope="col">
-                    @Html.DisplayNameFor(model => model.ThreadName)
-                </th>
-                <th scope="col">
-                    @Html.DisplayNameFor(model => model.StartedBy)
-                </th>
+                <th scope="col">Tema</th>
+                <th scope="col">Pokrenuo</th>
             </tr>
         </thead>
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.Threads)
         {
             <tr>
                 <td>
-                    @Html.ActionLink(item.ThreadName, "Show", "Forum", new { threadName = Server.UrlEncode(item.ThreadName) }, null)
+                    @Html.ActionLink(item.Name, "Show", "Forum", new { threadName = Server.UrlEncode(item.Name) }, null)
                 </td>
                 <td>
-                    @item.StartedBy @item.StartedAt.ToString("dd. MM. yyyy.")
+                    @item.Author.Username @item.CreatedAt.ToString("dd. MM. yyyy.")
                 </td>
             </tr>
         }
     </table>
 }
-else
-{
-    <h2>Trenutno nema tema na ovom forumu</h2>
-}
+
 
 @Html.ActionLink("Nova tema", "Create", "Thread", null, new { @class = "btn btn-dark mb-2 float-right" })
 

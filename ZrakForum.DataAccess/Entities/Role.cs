@@ -5,7 +5,7 @@ namespace ZrakForum.DataAccess.Entities
     public class Role : BaseEntity
     {
         public string Name { get; set; }
-        public ICollection<Account> Accounts { get; set; }
+        public IEnumerable<Account> Accounts { get; set; }
     }
 
     public static class RoleType
