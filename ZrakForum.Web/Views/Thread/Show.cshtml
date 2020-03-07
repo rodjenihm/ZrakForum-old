@@ -6,45 +6,26 @@
 
 @if (Model != null)
 {
-    <h2>@Model.Name</h2>
-
-    <div>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.CreatedAt)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.CreatedAt)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.AuthorId)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.AuthorId)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.ForumId)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.ForumId)
-            </dd>
-
-        </dl>
-    </div>
+    if (Model.Posts == null)
+    {
+        <h2>Neuspelo učitavanje komentara za ovu temu</h2>
+    }
+    else
+    {
+        <table class="table table-hover table-striped table-bordered">
+            @foreach (var item in Model.Posts)
+            {
+                <tr>
+                    <td>
+                        <span>@item.Author.Username</span>
+                        <br />
+                        <span>@item.CreatedAt.ToString("dd. MM. yyyy. HH:mm")h</span>
+                    </td>
+                    <td>@item.Content</td>
+                </tr>
+            }
+        </table>
+    }
 }
 else
 {

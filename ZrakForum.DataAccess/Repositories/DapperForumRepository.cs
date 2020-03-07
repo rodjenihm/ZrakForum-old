@@ -64,31 +64,7 @@ namespace ZrakForum.DataAccess.Repositories
             {
                 if (includeThreads)
                 {
-                    var sql = @"SELECT f.*, t.*, a.* FROM
-                                Forums f
-                                INNER JOIN Threads t ON t.ForumId = f.Id
-                                INNER JOIN Accounts a ON a.Id = t.AuthorId
-                                WHERE f.Name = @Name";
-
-                    var lookup = new Dictionary<int, Forum>();
-                    var forum = (await dbConnection.QueryAsync<Forum, Thread, Account, Forum>(sql, (f, t, a) =>
-                    {
-                        Forum foru;
-                        if (!lookup.TryGetValue(f.Id, out foru))
-                        {
-                            lookup.Add(f.Id, foru = f);
-                        }
-
-                        if (foru.Threads == null)
-                        {
-                            foru.Threads = new List<Thread>();
-                        }
-
-                        t.Author = a;
-                        foru.Threads.Add(t);
-                        return foru;
-                    }, new { Name = name })).FirstOrDefault();
-
+                    var forum = await GetForumWithThreadsAsync(name, dbConnection);
                     return forum;
                 }
                 else
@@ -97,6 +73,42 @@ namespace ZrakForum.DataAccess.Repositories
                     return forum;
                 }
             }
+        }
+
+        // Helpers
+        private static async Task<Forum> GetForumWithThreadsAsync(string name, SqlConnection dbConnection)
+        {
+            var sql = @"SELECT f.*, t.*, a.* FROM
+                                Forums f
+                                INNER JOIN Threads t ON t.ForumId = f.Id
+                                INNER JOIN Accounts a ON a.Id = t.AuthorId
+                                WHERE f.Name = @Name";
+
+            var lookup = new Dictionary<int, Forum>();
+            var forum = (await dbConnection.QueryAsync(sql, MapForumWithThreads(lookup), new { Name = name })).FirstOrDefault();
+            return forum;
+        }
+
+        // After joining three tables (Forums, Threads and Accounts) we need to tell Dapper how to construct complex forum model
+        private static Func<Forum, Thread, Account, Forum> MapForumWithThreads(Dictionary<int, Forum> lookup)
+        {
+            return (f, t, a) =>
+            {
+                Forum forum;
+                if (!lookup.TryGetValue(f.Id, out forum))
+                {
+                    lookup.Add(f.Id, forum = f);
+                }
+
+                if (forum.Threads == null)
+                {
+                    forum.Threads = new List<Thread>();
+                }
+
+                t.Author = a;
+                forum.Threads.Add(t);
+                return forum;
+            };
         }
     }
 }

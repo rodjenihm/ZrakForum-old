@@ -26,11 +26,11 @@ namespace ZrakForum.Web.Controllers
         {
             if (string.IsNullOrEmpty(threadName))
             {
-                var forum = await forumRepository.GetByNameAsync(forumName, true);
+                var forum = await forumRepository.GetByNameAsync(forumName, includeThreads: true);
                 return View(forum);
             }
 
-            var thread = await threadRepository.GetByNameAsync(Server.UrlDecode(threadName));
+            var thread = await threadRepository.GetByNameAsync(Server.UrlDecode(threadName), includePosts: true);
             return View("~/Views/Thread/Show.cshtml", thread);
         }
     }

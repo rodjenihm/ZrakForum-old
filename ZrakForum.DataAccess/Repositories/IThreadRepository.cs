@@ -9,8 +9,8 @@ namespace ZrakForum.DataAccess.Repositories
 {
     public interface IThreadRepository : IRepository<Thread>
     {
-        Thread GetByName(string name);
-        Task<Thread> GetByNameAsync(string name);
+        Thread GetByName(string name, bool includePosts = false);
+        Task<Thread> GetByNameAsync(string name, bool includePosts = false);
 
         IEnumerable<Thread> GetByForumName(string forumName);
         Task<IEnumerable<Thread>> GetByForumNameAsync(string forumName);

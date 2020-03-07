@@ -49,8 +49,10 @@ namespace ZrakForum.DataAccess.Repositories
         {
             using (var dbConnection = new SqlConnection(connectionString.Value))
             {
+
                 var threads = await dbConnection.QueryAsync<Thread>("spThreads_GetByForumName @ForumName", new { ForumName = forumName });
                 return threads;
+
             }
         }
 
@@ -64,18 +66,61 @@ namespace ZrakForum.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public Thread GetByName(string name)
+        public Thread GetByName(string name, bool includePosts)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Thread> GetByNameAsync(string name)
+        public async Task<Thread> GetByNameAsync(string name, bool includePosts)
         {
             using (var dbConnection = new SqlConnection(connectionString.Value))
             {
-                var thread = (await dbConnection.QueryAsync<Thread>("SELECT * FROM Threads WHERE Name = @Name", new { Name = name })).FirstOrDefault();
-                return thread;
+                if (includePosts)
+                {
+                    var thread = await GetThreadWithPostsAsync(name, dbConnection);
+                    return thread;
+                }
+                else
+                {
+                    var thread = (await dbConnection.QueryAsync<Thread>("SELECT * FROM Threads WHERE Name = @Name", new { Name = name })).FirstOrDefault();
+                    return thread;
+                }
             }
+        }
+
+        // Helpers
+        private static async Task<Thread> GetThreadWithPostsAsync(string name, SqlConnection dbConnection)
+        {
+            var sql = @"SELECT t.*, p.*, a.* FROM
+                                Threads t
+                                INNER JOIN Posts p ON p.ThreadId = t.Id
+                                INNER JOIN Accounts a ON a.Id = p.AuthorId
+                                WHERE t.Name = @Name";
+
+            var lookup = new Dictionary<int, Thread>();
+            var thread = (await dbConnection.QueryAsync(sql, MapThreadWithPostss(lookup), new { Name = name })).FirstOrDefault();
+            return thread;
+        }
+
+        private static Func<Thread, Post, Account, Thread> MapThreadWithPostss(Dictionary<int, Thread> lookup)
+        {
+            return (t, p, a) =>
+            {
+                Thread thread;
+                if (!lookup.TryGetValue(t.Id, out thread))
+                {
+                    lookup.Add(t.Id, thread = t);
+                }
+
+                if (thread.Posts == null)
+                {
+                    thread.Posts = new List<Post>();
+                }
+
+                p.Author = a;
+                thread.Posts.Add(p);
+                return thread;
+            };
         }
     }
 }
