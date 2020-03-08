@@ -121,6 +121,7 @@
     <Content Include="wwwroot\css\site.min.css">
       <DependentUpon>site.css</DependentUpon>
     </Content>
+    <Content Include="wwwroot\img\background.jpg" />
     <Content Include="wwwroot\img\logo.ico" />
     <Content Include="wwwroot\js\showLoginError.js" />
     <Content Include="wwwroot\lib\bootstrap\css\bootstrap-grid.css" />
@@ -170,6 +171,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Forum\Show.cshtml" />
     <Content Include="Views\Thread\Show.cshtml" />
+    <None Include="Properties\PublishProfiles\ZrakForum - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -189,7 +191,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ZrakForum.DataAccess\ZrakForum.DataAccess.csproj">

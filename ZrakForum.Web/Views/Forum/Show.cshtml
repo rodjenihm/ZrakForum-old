@@ -21,11 +21,11 @@ else
     }
     else
     {
-        <table class="table table-hover table-striped table-bordered">
+        <table class="table table-striped table-hover">
             <thead class="bg-dark text-light">
                 <tr>
-                    <th scope="col">Tema</th>
-                    <th scope="col">Pokrenuo</th>
+                    <th scope="col" style="width: 80%">Tema</th>
+                    <th scope="col" style="width: 20%">Pokrenuo</th>
                 </tr>
             </thead>
 
@@ -33,7 +33,7 @@ else
             {
                 <tr>
                     <td>
-                        @Html.ActionLink(item.Name, "Show", "Forum", new { threadName = Server.UrlEncode(item.Name) }, null)
+                        @Html.ActionLink(item.Name, "Show", "Forum", new { threadName = Server.UrlEncode(item.Name) }, new { @class = "text-dark" })
                     </td>
                     <td>
                         @if (item.Author != null)
@@ -52,7 +52,7 @@ else
         </table>
     }
 
-    @Html.ActionLink("Nova tema", "Create", "Thread", new { onForum = Server.UrlEncode(Model.Name) }, new { @class = "btn btn-dark mb-2 float-right" })
+    @Html.ActionLink("Nova tema", "Create", "Thread", new { onForum = Server.UrlEncode(Model.Name) }, new { @class = "btn btn-primary mb-2 float-right" })
 }
 
 

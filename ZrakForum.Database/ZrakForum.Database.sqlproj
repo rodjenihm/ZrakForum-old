@@ -94,5 +94,6 @@
     <None Include="dbo\Scripts\SeedAccounts.sql" />
     <None Include="dbo\Scripts\SeedForums.sql" />
     <None Include="dbo\Scripts\SeedThreads.sql" />
+    <None Include="ZrakForum_1.Database.publish.xml" />
   </ItemGroup>
 </Project>
