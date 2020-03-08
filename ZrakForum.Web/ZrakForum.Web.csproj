@@ -123,6 +123,7 @@
     </Content>
     <Content Include="wwwroot\img\background.jpg" />
     <Content Include="wwwroot\img\logo.ico" />
+    <Content Include="wwwroot\img\profile.png" />
     <Content Include="wwwroot\js\showLoginError.js" />
     <Content Include="wwwroot\lib\bootstrap\css\bootstrap-grid.css" />
     <Content Include="wwwroot\lib\bootstrap\css\bootstrap-grid.min.css" />

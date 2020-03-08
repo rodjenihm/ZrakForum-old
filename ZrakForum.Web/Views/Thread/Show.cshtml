@@ -8,19 +8,19 @@
 {
     if (Model.Posts == null)
     {
-        <h2>Neuspelo učitavanje komentara za ovu temu</h2>
+        <h2>Neuspelo učitavanje teme. Molimo pokušajte kasnije</h2>
     }
     else
     {
-        <h2>@Model.Name</h2>
+        <h2 class="text-dark">@Model.Name</h2>
         <table class="table table-striped table-hover">
             @foreach (var item in Model.Posts)
             {
                 <tr>
-                    <td style="width: 20%">
+                    <td class="border-right" style="width: 20%">
                         <span>
                             <img class="img-fluid rounded-circle img-profile"
-                                 src="https://www.kindpng.com/picc/m/24-248729_stockvader-predicted-adig-user-profile-image-png-transparent.png" />
+                                 src="~/wwwroot/img/profile.png" />
                         </span>
                         <br />
                         <span>@item.Author.Username</span>
@@ -32,7 +32,7 @@
             }
         </table>
 
-        <button class="btn btn-primary mb-2 float-right" id="showPostForm">Dodaj komentar</button>
+        <button class="btn btn-dark mb-2 float-right" id="showPostForm">Dodaj komentar</button>
 
         <form id="postForm">
             <input type="text" />
