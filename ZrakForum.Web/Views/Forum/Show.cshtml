@@ -37,7 +37,7 @@ else
                 {
                     <tr>
                         <td>
-                            @Html.ActionLink(item.Name, "Show", "Forum", new { threadName = Server.UrlEncode(item.Name) }, new { @class = "text-dark" })
+                            @Html.ActionLink(item.Name, "Show", "Forum", new { threadName = Server.UrlEncode(item.Name) }, new { @class = "text-dark font-italic font-weight-bold" })
                         </td>
                         <td>
                             @if (item.Author != null)

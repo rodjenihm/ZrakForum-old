@@ -21,10 +21,10 @@
             <tr>
                 <td>
                     <span>
-                        @Html.ActionLink(forum.Name, "Show", "Forum", new { forumName = Server.UrlEncode(forum.Name) }, new { @class = "navbar-brand text-dark" })
+                        @Html.ActionLink(forum.Name, "Show", "Forum", new { forumName = Server.UrlEncode(forum.Name) }, new { @class = "navbar-brand text-dark font-italic" })
                     </span>
                     <br />
-                    <span>
+                    <span class="font-weight-bold">
                         @forum.Description
                     </span>
                 </td>

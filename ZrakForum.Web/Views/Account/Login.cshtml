@@ -5,7 +5,7 @@
     var loginError = ViewBag.LoginError as string;
 }
 
-<h2>Prijavite se</h2>
+<h2 class="text-dark">Prijavite se</h2>
 
 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
@@ -32,7 +32,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Prijavite se" class="btn btn-primary" />
+                <input type="submit" value="Prijavite se" class="btn btn-dark" />
             </div>
         </div>
     </div>

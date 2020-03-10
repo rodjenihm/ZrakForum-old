@@ -4,9 +4,9 @@
     ViewBag.Title = "Registrujte se";
 }
 
-<h2>Registrujte se</h2>
+<h2 class="text-dark"> Registrujte se</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Register", "Account", null, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
 
@@ -47,7 +47,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Registrujte se" class="btn btn-primary" />
+                <input type="submit" value="Registrujte se" class="btn btn-dark" />
             </div>
         </div>
     </div>
