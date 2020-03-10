@@ -80,8 +80,8 @@ namespace ZrakForum.DataAccess.Repositories
         {
             var sql = @"SELECT f.*, t.*, a.* FROM
                                 Forums f
-                                INNER JOIN Threads t ON t.ForumId = f.Id
-                                INNER JOIN Accounts a ON a.Id = t.AuthorId
+                                LEFT JOIN Threads t ON t.ForumId = f.Id
+                                LEFT JOIN Accounts a ON a.Id = t.AuthorId
                                 WHERE f.Name = @Name";
 
             var lookup = new Dictionary<int, Forum>();
@@ -105,8 +105,12 @@ namespace ZrakForum.DataAccess.Repositories
                     forum.Threads = new List<Thread>();
                 }
 
-                t.Author = a;
-                forum.Threads.Add(t);
+                if (t != null)
+                {
+                    t.Author = a;
+                    forum.Threads.Add(t);
+                }
+
                 return forum;
             };
         }
