@@ -7,19 +7,19 @@
 
 @if (Model == null)
 {
-    <h2>Traženi forum ne postoji</h2>
+    <h2 class="text-dark">Traženi forum ne postoji</h2>
 }
 else
 {
     if (Model.Threads == null)
     {
-        <h2>Neuspešno učitavanje foruma. Molimo pokušajte kasnije</h2>
+        <h2 class="text-dark">Neuspešno učitavanje foruma. Molimo pokušajte kasnije</h2>
     }
     else
     {
         if (!Model.Threads.Any())
         {
-            <h2>Trenutno nema tema na ovom forumu</h2>
+            <h2 class="text-dark">Trenutno nema tema na ovom forumu</h2>
         }
         else
         {

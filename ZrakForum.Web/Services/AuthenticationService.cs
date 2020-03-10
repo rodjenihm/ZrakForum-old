@@ -13,11 +13,13 @@ namespace ZrakForum.Web.Services
     public class AuthenticationService : IAuthenticationService
     {
         private readonly IAccountRepository accountRepository;
+        private readonly IRoleRepository roleRepository;
         private readonly IPasswordHasher passwordHasher;
 
-        public AuthenticationService(IAccountRepository accountRepository, IPasswordHasher passwordHasher)
+        public AuthenticationService(IAccountRepository accountRepository, IRoleRepository roleRepository, IPasswordHasher passwordHasher)
         {
             this.accountRepository = accountRepository;
+            this.roleRepository = roleRepository;
             this.passwordHasher = passwordHasher;
         }
 
@@ -38,7 +40,7 @@ namespace ZrakForum.Web.Services
 
             var identity = new ClaimsIdentity(claims, "ApplicationCookie");
 
-            var roles = accountRepository.GetRolesByUsername(username);
+            var roles = roleRepository.GetRolesByUsername(username);
 
             if (roles.Any())
             {
@@ -73,7 +75,7 @@ namespace ZrakForum.Web.Services
 
             var identity = new ClaimsIdentity(claims, "ApplicationCookie");
 
-            var roles = accountRepository.GetRolesByUsername(username);
+            var roles = roleRepository.GetRolesByUsername(username);
 
             if (roles.Any())
             {

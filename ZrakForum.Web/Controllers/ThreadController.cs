@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace ZrakForum.Web.Controllers
 {
+    [Authorize]
     public class ThreadController : Controller
     {
         // GET: Thread

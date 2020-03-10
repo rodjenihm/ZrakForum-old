@@ -8,7 +8,7 @@
 {
     if (Model.Posts == null)
     {
-        <h2>Neuspelo učitavanje teme. Molimo pokušajte kasnije</h2>
+        <h2 class="text-dark">Neuspelo učitavanje teme. Molimo pokušajte kasnije</h2>
     }
     else
     {
@@ -27,33 +27,15 @@
                         <br />
                         <span>@item.CreatedAt.ToString("dd. MM. yyyy. HH:mm")h</span>
                     </td>
-                    <td style="width: 80%">@item.Content</td>
+                    <td class="text-dark" style="width: 80%">@item.Content</td>
                 </tr>
             }
         </table>
 
-        <button class="btn btn-dark mb-2 float-right" id="showPostForm">Dodaj komentar</button>
-
-        <form id="postForm">
-            <input type="text" />
-        </form>
+        @Html.ActionLink("Dodaj komentar", "Create", "Post", new { onThread = Server.UrlEncode(Model.Name) }, new { @class = "btn btn-dark mb-2 float-right" })
     }
 }
 else
 {
-    <h2>Nema teme sa tim nazivom</h2>
-}
-
-@section Scripts {
-    @Html.Partial("_ValidationScriptsPartial")
-
-    <script>
-        $(document).ready(function () {
-            $("#postForm").hide();
-
-            $("#showPostForm").click(function () {
-                $("#postForm").toggle('slow');
-            });
-        });
-    </script>
+    <h2 class="text-dark">Nema teme sa tim nazivom</h2>
 }

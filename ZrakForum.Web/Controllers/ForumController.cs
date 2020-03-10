@@ -8,6 +8,7 @@ using ZrakForum.DataAccess.Repositories;
 
 namespace ZrakForum.Web.Controllers
 {
+    [Authorize]
     public class ForumController : Controller
     {
         private readonly IForumRepository forumRepository;
@@ -21,7 +22,6 @@ namespace ZrakForum.Web.Controllers
             this.accountRepository = accountRepository;
         }
 
-        [Authorize]
         public async Task<ActionResult> Show(string forumName, string threadName)
         {
             if (string.IsNullOrEmpty(threadName))

@@ -11,8 +11,5 @@ namespace ZrakForum.DataAccess.Repositories
 
         Account GetByEmail(string email);
         Task<Account> GetByEmailAsync(string email);
-
-        IEnumerable<string> GetRolesByUsername(string username);
-        Task<IEnumerable<string>> GetRolesByUsernameAsync(string username);
     }
 }

@@ -20,8 +20,10 @@ namespace ZrakForum.Web
             container.RegisterType<DapperConnectionString>
                 (new InjectionConstructor(ConfigurationManager.ConnectionStrings["LocalZrakForumDb"].ConnectionString));
             container.RegisterType<IAccountRepository, DapperAccountRepository>();
+            container.RegisterType<IRoleRepository, DapperRoleRepository>();
             container.RegisterType<IForumRepository, DapperForumRepository>();
             container.RegisterType<IThreadRepository, DapperThreadRepository>();
+            container.RegisterType<IPostRepository, DapperPostRepository>();
             container.RegisterType<IPasswordHasher, PasswordHasher>();
             container.RegisterType<IAuthenticationService, AuthenticationService>();
             // e.g. container.RegisterType<ITestService, TestService>();
