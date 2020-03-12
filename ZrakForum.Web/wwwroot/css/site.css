@@ -61,8 +61,14 @@ button.accept-policy {
 }
 
 table {
-    background-color: rgba(150, 150, 150, 0.55);
+    background-color: rgba(150, 150, 150, 0.45);
     z-index: 10;
+}
+
+.form-list {
+    background-color: rgba(150, 150, 150, 0.45);
+    z-index: 10;
+    padding-bottom: 10px;
 }
 
 /* Sticky footer styles

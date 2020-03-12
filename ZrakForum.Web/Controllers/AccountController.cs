@@ -66,7 +66,7 @@ namespace ZrakForum.Web.Controllers
 
             await accountRepository.AddAsync(newAccount);
 
-            return View();
+            return RedirectToAction("Login");
         }
 
         [HttpPost]

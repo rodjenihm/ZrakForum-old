@@ -28,7 +28,7 @@ namespace ZrakForum.DataAccess.Repositories
         {
             using (var dbConnection = new SqlConnection(connectionString.Value))
             {
-                await dbConnection.ExecuteAsync("INSERT INTO Posts (Content, AuthorId, ThreadId) VALUES (@Content, @AuthorId, @ThreadId)", post);
+                await dbConnection.ExecuteAsync("spPosts_Create @Content, @AuthorId, @ThreadId", post);
             }
         }
 

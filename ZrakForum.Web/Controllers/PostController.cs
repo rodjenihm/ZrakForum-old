@@ -34,6 +34,11 @@ namespace ZrakForum.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(PostCreateDto model, string onThread)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             var thread = await threadRepository.GetByNameAsync(onThread);
             var author = await accountRepository.GetByUsernameAsync(User.Identity.Name);
 

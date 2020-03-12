@@ -24,9 +24,12 @@ namespace ZrakForum.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public Task AddAsync(Thread t)
+        public async Task AddAsync(Thread thread)
         {
-            throw new NotImplementedException();
+            using (var dbConnection = new SqlConnection(connectionString.Value))
+            {
+                await dbConnection.ExecuteAsync("spThreads_Create @Name, @AuthorId, @ForumId", thread);
+            }
         }
 
         public IEnumerable<Thread> GetAll()
@@ -82,7 +85,7 @@ namespace ZrakForum.DataAccess.Repositories
                 }
                 else
                 {
-                    var thread = (await dbConnection.QueryAsync<Thread>("SELECT * FROM Threads WHERE Name = @Name", new { Name = name })).FirstOrDefault();
+                    var thread = (await dbConnection.QueryAsync<Thread>("spThreads_GetByName @Name", new { Name = name })).FirstOrDefault();
                     return thread;
                 }
             }

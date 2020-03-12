@@ -18,7 +18,7 @@ namespace ZrakForum.Web
             // register all your components with the container here
             // it is NOT necessary to register your controllers
             container.RegisterType<DapperConnectionString>
-                (new InjectionConstructor(ConfigurationManager.ConnectionStrings["LocalZrakForumDb"].ConnectionString));
+                (new InjectionConstructor(ConfigurationManager.ConnectionStrings["GhostZrakForumDb"].ConnectionString));
             container.RegisterType<IAccountRepository, DapperAccountRepository>();
             container.RegisterType<IRoleRepository, DapperRoleRepository>();
             container.RegisterType<IForumRepository, DapperForumRepository>();
