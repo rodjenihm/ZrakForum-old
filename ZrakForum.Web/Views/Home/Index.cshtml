@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ZrakForum.DataAccess.Entities.Forum>
+﻿@model IEnumerable<ZrakForum.Web.Models.ForumInfo>
 @{
     ViewBag.Title = "Početna";
 }
@@ -16,17 +16,23 @@
 <div class="text-light bg-dark p-2">Spisak foruma</div>
 <table class="table table-striped table-hover">
     <tbody>
-        @foreach (var forum in Model)
+        @foreach (var forumInfo in Model)
         {
             <tr>
-                <td>
-                    <span>
-                        @Html.ActionLink(forum.Name, "Show", "Forum", new { forumName = Server.UrlEncode(forum.Name) }, new { @class = "navbar-brand text-dark font-italic" })
+                <td style="width: 60%">
+                    <span class="font-weight-bold text-dark font-italic">
+                        @Html.ActionLink(forumInfo.Name, "Show", "Forum", new { forumName = Server.UrlEncode(forumInfo.Name) }, new { @class = "navbar-brand text-dark" })
                     </span>
                     <br />
                     <span class="font-weight-bold">
-                        @forum.Description
+                        @forumInfo.Description
                     </span>
+                    <br />
+                    <span class="font-weight-bold">
+                        Tema: @forumInfo.ThreadCount, Komentara: @forumInfo.PostCount
+                    </span>
+                </td>
+                <td style="width: 20%">
                 </td>
             </tr>
         }

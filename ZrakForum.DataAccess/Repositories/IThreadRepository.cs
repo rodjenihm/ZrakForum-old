@@ -14,5 +14,8 @@ namespace ZrakForum.DataAccess.Repositories
 
         IEnumerable<Thread> GetByForumName(string forumName);
         Task<IEnumerable<Thread>> GetByForumNameAsync(string forumName);
+
+        int CountByForum(string forumName);
+        Task<int> CountByForumAsync(string forumName);
     }
 }

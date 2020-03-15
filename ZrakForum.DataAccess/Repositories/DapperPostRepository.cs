@@ -19,17 +19,41 @@ namespace ZrakForum.DataAccess.Repositories
             this.connectionString = connectionString;
         }
 
-        public void Add(Post t)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task AddAsync(Post post)
         {
             using (var dbConnection = new SqlConnection(connectionString.Value))
             {
                 await dbConnection.ExecuteAsync("spPosts_Create @Content, @AuthorId, @ThreadId", post);
             }
+        }
+
+        public int CountByForum(string forumName)
+        {
+            using (var dbConnection = new SqlConnection(connectionString.Value))
+            {
+                var sql = @"select 
+                            count(p.Id)
+                            from posts p
+                            where p.ThreadId in (select
+                                                 t.Id
+                                                 from threads t
+                                                 where t.ForumId = (select
+                                                                    Id
+                                                                    from forums f
+                                                                    where f.Name = @ForumName))";
+
+                return dbConnection.ExecuteScalar<int>(sql, new { ForumName = forumName });
+            }
+        }
+
+        public Task<int> CountByForumAsync(string forumName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(Post t)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<Post> GetAll()

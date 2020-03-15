@@ -9,5 +9,7 @@ namespace ZrakForum.DataAccess.Repositories
 {
     public interface IPostRepository : IRepository<Post>
     {
+        int CountByForum(string forumName);
+        Task<int> CountByForumAsync(string forumName);
     }
 }

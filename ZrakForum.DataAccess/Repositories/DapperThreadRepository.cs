@@ -91,6 +91,24 @@ namespace ZrakForum.DataAccess.Repositories
             }
         }
 
+        public int CountByForum(string forumName)
+        {
+            using (var dbConnection = new SqlConnection(connectionString.Value))
+            {
+                var sql = @"select
+                            count(t.Id)
+                            from threads t
+                            where ForumId = (select f.Id from forums f where Name = @ForumName);";
+
+                return dbConnection.ExecuteScalar<int>(sql, new { ForumName = forumName });
+            }
+        }
+
+        public Task<int> CountByForumAsync(string forumName)
+        {
+            throw new NotImplementedException();
+        }
+
         // Helpers
         private static async Task<Thread> GetThreadWithPostsAsync(string name, SqlConnection dbConnection)
         {
