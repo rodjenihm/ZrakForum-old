@@ -14,3 +14,4 @@ Still need to implement various different things like:
 -admin options (allows admins to delete threads, posts and ban users)  
 etc...
 
+Development stopped
